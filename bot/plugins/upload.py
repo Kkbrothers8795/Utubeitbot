@@ -61,7 +61,8 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-        await snt.edit_text(text=file, enums.ParseMode.MARKDOWN)
+        app.set_parse_mode(enums.ParseMode.MARKDOWN)
+        await snt.edit_text(text=file)
         return
 
     try:
@@ -77,7 +78,8 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-    await snt.edit_text(text=link, enums.ParseMode.MARKDOWN)
+        app.set_parse_mode(enums.ParseMode.MARKDOWN)
+    await snt.edit_text(text=link)
 
 
 def get_download_id(storage: dict) -> str:
